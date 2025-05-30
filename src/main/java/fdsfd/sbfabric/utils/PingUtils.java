@@ -10,20 +10,15 @@ public class PingUtils {
 
     public static int displayPing() {
         MinecraftClient client = MinecraftClient.getInstance();
-        ClientPlayNetworkHandler networkHandler = client.getNetworkHandler();
-        if (networkHandler != null) {
-            PlayerListEntry playerListEntry = networkHandler.getPlayerListEntry(client.player.getUuid());
-            if (playerListEntry != null) {
-                int ping = playerListEntry.getLatency();
-                client.player.sendMessage(
-                    Text.literal("SBFabric").formatted(Formatting.BOLD).formatted(Formatting.BLUE)
-                        .append(Text.literal(" ➤ ").formatted(Formatting.BOLD).formatted(Formatting.GRAY))
-                        .append(Text.literal("Ping: ").formatted(Formatting.BOLD).formatted(Formatting.YELLOW))
-                        .append(Text.literal(String.valueOf(ping)).formatted(Formatting.BOLD).formatted(Formatting.GREEN))
-                        .append(Text.literal(" ms").formatted(Formatting.BOLD).formatted(Formatting.YELLOW))
-                    , false);
-            }
-        }
+        int ping = getPing();
+        client.player.sendMessage(
+            Text.literal("SBFabric").formatted(Formatting.BOLD).formatted(Formatting.BLUE)
+                .append(Text.literal(" ➤ ").formatted(Formatting.BOLD).formatted(Formatting.GRAY))
+                .append(Text.literal("Ping: ").formatted(Formatting.BOLD).formatted(Formatting.YELLOW))
+                .append(Text.literal(String.valueOf(ping)).formatted(Formatting.BOLD).formatted(Formatting.GREEN))
+                .append(Text.literal(" ms").formatted(Formatting.BOLD).formatted(Formatting.YELLOW))
+            , false);
+
         return 1;
     }
 

@@ -15,8 +15,11 @@
 	"icon": "assets/sbfabric/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": [
+		"client": [
 			"fdsfd.sbfabric.SBFabric"
+		],
+		"modmenu": [
+			"fdsfd.sbfabric.compatibility.ModMenu.ModMenuIntegration"
 		]
 	},
 	"mixins": [
@@ -30,5 +33,12 @@
 	},
 	"suggests": {
 		"another-mod": "*"
+	},
+	"custom": {
+		"modmenu": {
+			"links": {
+				"modmenu.discord": "https://discord.gg/6x22sWgFKa"
+			}
+		}
 	}
 }
