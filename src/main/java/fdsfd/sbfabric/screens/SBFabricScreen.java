@@ -1,5 +1,9 @@
 package fdsfd.sbfabric.screens;
 
+import fdsfd.sbfabric.screens.DungeonsScreen;
+import fdsfd.sbfabric.screens.FarmingScreen;
+import fdsfd.sbfabric.screens.MiningScreen;
+import fdsfd.sbfabric.screens.MiscScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -17,12 +21,40 @@ public class SBFabricScreen extends Screen {
     }
 
     public void init() {
-        int buttonWidth = 120;
+        int buttonWidth = 300;
         int buttonHeight = 20;
         int x = (this.width - buttonWidth) / 2;
-        int y = (this.height - buttonHeight) / 2;
+        int y = (this.height - 110) / 2;
 
-        ButtonWidget 
+        ButtonWidget farmingButton = ButtonWidget.builder(Text.of("Farming"), (button) -> {
+            this.client.setScreen(new FarmingScreen());
+        }).dimensions(x, y, buttonWidth, buttonHeight).build();
+
+        this.addDrawableChild(farmingButton);
+
+        y += buttonHeight + 10;
+
+        ButtonWidget miningButton = ButtonWidget.builder(Text.of("Mining"), (button) -> {
+            this.client.setScreen(new MiningScreen());
+        }).dimensions(x, y, buttonWidth, buttonHeight).build();
+
+        this.addDrawableChild(miningButton);
+
+        y += buttonHeight + 10;
+
+        ButtonWidget dungeonsButton = ButtonWidget.builder(Text.of("Dungeons"), (button) -> {
+            this.client.setScreen(new DungeonsScreen());
+        }).dimensions(x, y, buttonWidth, buttonHeight).build();
+
+        this.addDrawableChild(dungeonsButton);
+
+        y += buttonHeight + 10;
+
+        ButtonWidget miscButton = ButtonWidget.builder(Text.of("Misc"), (button) -> {
+            this.client.setScreen(new MiscScreen());
+        }).dimensions(x, y, buttonWidth, buttonHeight).build();
+
+        this.addDrawableChild(miscButton);
     }
 
     @Override

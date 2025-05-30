@@ -19,7 +19,7 @@
 			"fdsfd.sbfabric.SBFabric"
 		],
 		"modmenu": [
-			"fdsfd.sbfabric.compatibility.ModMenu.ModMenuIntegration"
+			"fdsfd.sbfabric.compatibility.modmenu.ModMenuIntegration"
 		]
 	},
 	"mixins": [
