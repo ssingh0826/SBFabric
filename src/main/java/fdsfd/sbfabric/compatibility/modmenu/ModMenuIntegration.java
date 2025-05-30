@@ -1,8 +1,8 @@
-package fdsfd.sbfabric.compatibility.ModMenu;
+package fdsfd.sbfabric.compatibility.modmenu;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
-import fdsfd.sbfabric.SBFabricScreen;
+import fdsfd.sbfabric.screens.SBFabricScreen;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;

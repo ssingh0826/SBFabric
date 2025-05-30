@@ -1,6 +1,7 @@
 package fdsfd.sbfabric;
 
 import com.mojang.brigadier.tree.LiteralCommandNode;
+import fdsfd.sbfabric.screens.SBFabricScreen;
 import fdsfd.sbfabric.utils.PingUtils;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
@@ -26,7 +27,6 @@ public class SBFabric implements ClientModInitializer {
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
 			final LiteralCommandNode<FabricClientCommandSource> sbfNode = dispatcher.register(literal("sbf")
 					.executes(context -> {
-						LOGGER.info("/sbf command executed");
 						MinecraftClient.getInstance().execute(() -> {
 							MinecraftClient client = MinecraftClient.getInstance();
 							client.player.sendMessage(Text.literal("For whatever reason, /sbf currently does not open the screen. Until it is fixed, open the config screen from ModMenu.").formatted(Formatting.RED), false);
