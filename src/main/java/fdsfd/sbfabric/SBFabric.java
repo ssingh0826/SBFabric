@@ -1,6 +1,7 @@
 package fdsfd.sbfabric;
 
 import com.mojang.brigadier.tree.LiteralCommandNode;
+import fdsfd.sbfabric.config.ConfigManager;
 import fdsfd.sbfabric.screens.SBFabricScreen;
 import fdsfd.sbfabric.utils.PingUtils;
 import net.fabricmc.api.ClientModInitializer;
@@ -24,6 +25,11 @@ public class SBFabric implements ClientModInitializer {
 
 		LOGGER.info("SBFabric is initializing!");
 
+		LOGGER.info("Loading config!");
+		ConfigManager.load();
+		LOGGER.info("Config finished loading!");
+
+		LOGGER.info("Registering commands!");
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
 			final LiteralCommandNode<FabricClientCommandSource> sbfNode = dispatcher.register(literal("sbf")
 					.executes(context -> {
@@ -42,6 +48,7 @@ public class SBFabric implements ClientModInitializer {
 					)
 			);
 		});
+		LOGGER.info("Commands finished registering!");
 
 		LOGGER.info("SBFabric is done initializing!");
 	}
