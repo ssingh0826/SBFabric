@@ -1,8 +1,9 @@
 {
 	"required": true,
-	"package": "fdsfd.sbfabric.mixin",
+	"package": "fdsfd.sbfabric.mixins",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
+		"ClientPlayNetworkHandlerMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

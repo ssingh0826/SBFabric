@@ -15,15 +15,21 @@ repositories {
 		name = "Terraformers"
 		url = "https://maven.terraformersmc.com/releases/"
 	}
+	maven {
+		name = "Fabric"
+		url = "https://maven.fabricmc.net/"
+	}
+	mavenCentral()
 }
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	modImplementation "com.google.code.gson:gson:2.10.1"
+	modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
-	modImplementation "com.google.code.gson:gson:2.10.1"
+
 }
 
 processResources {
@@ -62,5 +68,10 @@ publishing {
 	repositories {
 
 	}
+}
 
+loom {
+	mixin {
+		defaultRefmapName = "${project.archives_base_name}.refmap.json"
+	}
 }
