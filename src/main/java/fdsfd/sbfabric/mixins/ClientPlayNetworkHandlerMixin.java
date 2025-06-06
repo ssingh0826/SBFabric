@@ -19,6 +19,7 @@ public class ClientPlayNetworkHandlerMixin {
 
         // Puzzler Solver
         if (messageString.startsWith("§e[NPC] §dPuzzler§f: ") && Config.puzzlerSolverEnabled) {
+            System.out.println("Puzzler message received: " + messageString);
             PuzzlerSolver.solvePuzzler(messageString);
         }
     }

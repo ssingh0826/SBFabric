@@ -1,10 +1,18 @@
 package fdsfd.sbfabric.screens;
 
 import fdsfd.sbfabric.config.ConfigManager;
+import fdsfd.sbfabric.features.puzzler.PuzzlerSolver;
+import fdsfd.sbfabric.utils.RenderUtils;
+import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Vec3d;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,7 +49,6 @@ public class MiningScreen extends Screen {
         ButtonWidget puzzlerSolverButton = ButtonWidget.builder(Text.of("Puzzler Solver: " + (ConfigManager.config.puzzlerSolverEnabled ? "ON" : "OFF")), (button) -> {
             ConfigManager.config.puzzlerSolverEnabled = !ConfigManager.config.puzzlerSolverEnabled;
             button.setMessage(Text.of("Puzzler Solver: " + (ConfigManager.config.puzzlerSolverEnabled ? "ON" : "OFF")));
-
             ConfigManager.save();
 
         }).dimensions(x, y, buttonWidth, buttonHeight).build();
