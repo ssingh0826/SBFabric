@@ -1,9 +1,5 @@
 package fdsfd.sbfabric.screens;
 
-import fdsfd.sbfabric.screens.DungeonsScreen;
-import fdsfd.sbfabric.screens.FarmingScreen;
-import fdsfd.sbfabric.screens.MiningScreen;
-import fdsfd.sbfabric.screens.MiscScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.widget.ButtonWidget;

@@ -8,7 +8,6 @@ import fdsfd.sbfabric.utils.PingUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.text.Text;
 
 public class SBFCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
