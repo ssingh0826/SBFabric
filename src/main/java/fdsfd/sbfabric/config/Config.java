@@ -9,7 +9,7 @@ public class Config {
 
 
     // MINING
-    public static boolean puzzlerSolverEnabled = true;
+    public boolean puzzlerSolverEnabled = true;
 
     // MISC
 }
