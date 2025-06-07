@@ -20,6 +20,7 @@ public class SBFabricScreen extends Screen {
         // Intentionally left empty
     }
 
+    @Override
     public void init() {
         int buttonWidth = 300;
         int buttonHeight = 20;

@@ -1,6 +1,8 @@
 package fdsfd.sbfabric;
 
 import com.mojang.brigadier.tree.LiteralCommandNode;
+import fdsfd.sbfabric.commands.DropRateCommand;
+import fdsfd.sbfabric.commands.SBFCommand;
 import fdsfd.sbfabric.config.ConfigManager;
 import fdsfd.sbfabric.features.puzzler.PuzzlerSolver;
 import fdsfd.sbfabric.screens.SBFabricScreen;
@@ -10,6 +12,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.util.math.MatrixStack;
@@ -40,24 +43,15 @@ public class SBFabric implements ClientModInitializer {
 		LOGGER.info("Config finished loading!");
 
 		LOGGER.info("Registering commands!");
-		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
-			final LiteralCommandNode<FabricClientCommandSource> sbfNode = dispatcher.register(literal("sbf")
-					.executes(context -> {
-						MinecraftClient.getInstance().execute(() -> {
-							MinecraftClient client = MinecraftClient.getInstance();
-							client.player.sendMessage(Text.literal("For whatever reason, /sbf currently does not open the screen. Until it is fixed, open the config screen from ModMenu.").formatted(Formatting.RED), false);
-							client.setScreen(new SBFabricScreen());
-						});
-						return 1;
-					})
-					.then(literal("ping")
-						.executes(context -> {
-							PingUtils.displayPing();
-							return 1;
-						})
-					)
-			);
+
+		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
+			SBFCommand.register(dispatcher);
 		});
+
+		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
+			DropRateCommand.register(dispatcher);
+		});
+
 		LOGGER.info("Commands finished registering!");
 
 		LOGGER.info("Registering event listeners!");
