@@ -1,30 +1,21 @@
 package fdsfd.sbfabric;
 
-import com.mojang.brigadier.tree.LiteralCommandNode;
 import fdsfd.sbfabric.commands.DropRateCommand;
 import fdsfd.sbfabric.commands.SBFCommand;
 import fdsfd.sbfabric.config.ConfigManager;
 import fdsfd.sbfabric.features.puzzler.PuzzlerSolver;
-import fdsfd.sbfabric.screens.SBFabricScreen;
-import fdsfd.sbfabric.utils.PingUtils;
 import fdsfd.sbfabric.utils.RenderUtils;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
-import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
-import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal;
 
 public class SBFabric implements ClientModInitializer {
 
@@ -44,11 +35,11 @@ public class SBFabric implements ClientModInitializer {
 
 		LOGGER.info("Registering commands!");
 
-		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
+		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
 			SBFCommand.register(dispatcher);
 		});
 
-		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
+		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
 			DropRateCommand.register(dispatcher);
 		});
 

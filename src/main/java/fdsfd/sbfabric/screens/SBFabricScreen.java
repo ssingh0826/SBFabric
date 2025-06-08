@@ -1,9 +1,5 @@
 package fdsfd.sbfabric.screens;
 
-import fdsfd.sbfabric.screens.DungeonsScreen;
-import fdsfd.sbfabric.screens.FarmingScreen;
-import fdsfd.sbfabric.screens.MiningScreen;
-import fdsfd.sbfabric.screens.MiscScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -13,6 +9,11 @@ public class SBFabricScreen extends Screen {
 
     public SBFabricScreen() {
         super(Text.literal("SBFabric"));
+    }
+
+    @Override
+    public void close() {
+        super.close();
     }
 
     @Override
@@ -67,6 +68,6 @@ public class SBFabricScreen extends Screen {
 
     @Override
     public boolean shouldPause() {
-        return false;
+        return true;
     }
 }
