@@ -13,7 +13,7 @@ import java.nio.file.Path;
 public class ConfigManager {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("sbfabric_config.json");
-    public static Config config;
+    public static Config config = new Config();
 
     public static void load() {
         try (Reader reader = Files.newBufferedReader(CONFIG_PATH)) {

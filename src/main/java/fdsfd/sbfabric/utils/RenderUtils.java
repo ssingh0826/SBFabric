@@ -64,8 +64,6 @@ public class RenderUtils {
 
     public static void drawTranslucentBox(MatrixStack matrices, VertexConsumerProvider buffers, Box box, Vec3d cameraPos, float r, float g, float b, float a) {
 
-        System.out.println("drawing the translucent box");
-
         MatrixStack.Entry entry = matrices.peek();
         Matrix4f matrix = entry.getPositionMatrix();
 

@@ -19,7 +19,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class SBFabric implements ClientModInitializer {
-
 	public static final String MOD_ID = "sbfabric";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
@@ -27,7 +26,6 @@ public class SBFabric implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-
 		LOGGER.info("SBFabric is initializing!");
 
 		LOGGER.info("Loading config!");
@@ -50,7 +48,7 @@ public class SBFabric implements ClientModInitializer {
 
 		WorldRenderEvents.AFTER_ENTITIES.register(context -> {
 			if (PuzzlerSolver.block == null || PuzzlerSolver.puzzlerSolved) return;
-			if (!ConfigManager.config.puzzlerSolverEnabled) return;
+			if (ConfigManager.config == null || !ConfigManager.config.puzzlerSolverEnabled) return;
 
 			Vec3d cameraPos = context.camera().getPos();
 			MatrixStack matrices = context.matrixStack();
