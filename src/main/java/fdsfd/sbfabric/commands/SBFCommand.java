@@ -23,7 +23,7 @@ public class SBFCommand {
         SBFabricScreen screen = new SBFabricScreen();
 
         // client.setScreen(new SBFabricScreen());
-        // Not functional. Figuring it out.
+        // Not functional.
         return 1;
     }
 
