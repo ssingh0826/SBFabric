@@ -2,13 +2,11 @@ package fdsfd.sbfabric.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
-import fdsfd.sbfabric.SBFabric;
 import fdsfd.sbfabric.screens.SBFabricScreen;
 import fdsfd.sbfabric.utils.PingUtils;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.Screen;
 
 public class SBFCommand {
     public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher) {
