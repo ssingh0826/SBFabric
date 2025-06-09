@@ -7,6 +7,7 @@ import fdsfd.sbfabric.features.puzzler.PuzzlerSolver;
 import fdsfd.sbfabric.utils.RenderUtils;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -63,6 +64,9 @@ public class SBFabric implements ClientModInitializer {
 
 			buffer.draw();
 		});
+
+		ClientTickEvents.END_CLIENT_TICK.register(SBFCommand::tick);
+
 		LOGGER.info("SBFabric is done initializing!");
 	}
 }
