@@ -2,6 +2,7 @@ package fdsfd.sbfabric.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import fdsfd.sbfabric.SBFabric;
 import fdsfd.sbfabric.screens.SBFabricScreen;
 import fdsfd.sbfabric.utils.PingUtils;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
@@ -10,7 +11,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 
 public class SBFCommand {
-    private static MinecraftClient client = MinecraftClient.getInstance();
     public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher) {
         dispatcher.register(ClientCommandManager.literal("sbf")
             .executes(SBFCommand::execute1)
@@ -19,12 +19,11 @@ public class SBFCommand {
     }
 
     private static int execute1 (CommandContext<FabricClientCommandSource> context) {
-        Screen screen = new SBFabricScreen();
+        MinecraftClient client = MinecraftClient.getInstance();
+        SBFabricScreen screen = new SBFabricScreen();
 
-        client.executeSync(() -> {
-            // To be worked on. This isn't working for some reason.
-            System.out.println("Opened Successfully");
-        });
+        // client.setScreen(new SBFabricScreen());
+        // Not functional. Figuring it out.
         return 1;
     }
 
