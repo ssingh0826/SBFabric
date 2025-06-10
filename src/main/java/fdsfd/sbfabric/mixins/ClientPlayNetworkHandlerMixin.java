@@ -1,6 +1,7 @@
 package fdsfd.sbfabric.mixins;
 
 import fdsfd.sbfabric.config.Config;
+import fdsfd.sbfabric.features.puzzler.DungeonBlessingDisplay;
 import fdsfd.sbfabric.features.puzzler.PuzzlerSolver;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
@@ -26,6 +27,12 @@ public class ClientPlayNetworkHandlerMixin {
         if (messageString.startsWith("§e[NPC] §dPuzzler§f: ") && config.puzzlerSolverEnabled) {
             System.out.println("Puzzler message received: " + messageString);
             PuzzlerSolver.solvePuzzler(messageString);
+        }
+
+        // Dungeon Blessing Chat Logger
+        if (messageString.startsWith("DUNGEON BUFF!") || messageString.startsWith("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")) {
+            System.out.println("Dungeon buff registered.");
+            DungeonBlessingDisplay.displayBlessings(messageString);
         }
     }
 }
