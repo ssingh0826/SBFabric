@@ -1,17 +1,19 @@
 package fdsfd.sbfabric.features.puzzler;
 
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.scoreboard.Scoreboard;
+import net.minecraft.scoreboard.Team;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DungeonBlessingDisplay {
     public static int blessingOfPower = 0, blessingOfWisdom = 0, blessingOfTime = 0;
+    public static boolean inDungeons = false;
     public static void displayBlessings(String chatMessage) {
         MinecraftClient client = MinecraftClient.getInstance();
 
         if (!client.isOnThread()) return;
-
-        if (chatMessage.startsWith("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")) {
-            blessingOfPower = 0; blessingOfWisdom = 0; blessingOfTime = 0;
-        }
 
         if (chatMessage.toLowerCase().startsWith("dungeon buff!")) {
             String[] messageSplit = chatMessage.split(" ");
@@ -49,6 +51,25 @@ public class DungeonBlessingDisplay {
             case "Time":
                 blessingOfTime += value;
                 break;
+        }
+    }
+
+    public static void resetBlessings() {
+        blessingOfPower = 0; blessingOfWisdom = 0; blessingOfTime = 0;
+    }
+
+    public static void checkDungeonStatus() {
+        Scoreboard scoreboard = MinecraftClient.getInstance().player.getScoreboard();
+        List<Team> teams = new ArrayList<>(scoreboard.getTeams());
+        if (teams.size() > 12) {
+            for (Team team : teams) {
+                if ((team.getPrefix().getString() + "" + team.getSuffix().getString()).contains("Catacombs")) {
+                    inDungeons = true;
+                    break;
+                } else {
+                    inDungeons = false;
+                }
+            }
         }
     }
 

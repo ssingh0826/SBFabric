@@ -35,4 +35,16 @@ public class ClientPlayNetworkHandlerMixin {
             DungeonBlessingDisplay.displayBlessings(messageString);
         }
     }
+
+    // Scoreboard Updating Logger
+    @Inject(method = "onScoreboardObjectiveUpdate", at = @At("TAIL"))
+    private void onScoreboardChange(CallbackInfo ci) throws InterruptedException {
+        DungeonBlessingDisplay.checkDungeonStatus();
+    }
+
+    // World Loader
+    @Inject(method = "onGameJoin", at = @At("HEAD"))
+    private void onWorldLoad(CallbackInfo ci) {
+        DungeonBlessingDisplay.resetBlessings();
+    }
 }

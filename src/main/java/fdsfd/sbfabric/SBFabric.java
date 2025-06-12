@@ -70,6 +70,7 @@ public class SBFabric implements ClientModInitializer {
 
 		HudRenderCallback.EVENT.register((context, tickCounter)  -> {
 			if (ConfigManager.config == null || !ConfigManager.config.displayDungeonBlessings) return;
+			if (!DungeonBlessingDisplay.inDungeons) return;
 			TextRenderer renderer = MinecraftClient.getInstance().textRenderer;
 			Matrix4f matrices = context.getMatrices().peek().translate(0.0F, 0.0F, 0.0F);
 			VertexConsumerProvider.Immediate buffer = MinecraftClient.getInstance().getBufferBuilders().getEntityVertexConsumers();
