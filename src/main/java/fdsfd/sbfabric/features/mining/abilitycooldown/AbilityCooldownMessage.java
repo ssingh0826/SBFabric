@@ -1,4 +1,4 @@
-package fdsfd.sbfabric.features.abilitycooldown;
+package fdsfd.sbfabric.features.mining.abilitycooldown;
 
 import fdsfd.sbfabric.config.ConfigManager;
 import net.minecraft.client.MinecraftClient;
@@ -10,6 +10,7 @@ public class AbilityCooldownMessage {
     public static void message(String ability) {
         MinecraftClient client = MinecraftClient.getInstance();
         InGameHud hud = client.inGameHud;
+
         if (ConfigManager.config.abilityCooldownMessageEnabled) {
             hud.setTitle(Text.literal(ability + " available!").formatted(Formatting.AQUA).formatted(Formatting.BOLD));
         }

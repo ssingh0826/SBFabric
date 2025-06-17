@@ -1,9 +1,9 @@
 package fdsfd.sbfabric.mixins;
 
 import fdsfd.sbfabric.config.ConfigManager;
-import fdsfd.sbfabric.features.abilitycooldown.AbilityCooldownMessage;
-import fdsfd.sbfabric.features.dungeonblessingdisplay.DungeonBlessingDisplay;
-import fdsfd.sbfabric.features.puzzler.PuzzlerSolver;
+import fdsfd.sbfabric.features.mining.abilitycooldown.AbilityCooldownMessage;
+import fdsfd.sbfabric.features.dungeons.dungeonblessingdisplay.DungeonBlessingDisplay;
+import fdsfd.sbfabric.features.mining.puzzler.PuzzlerSolver;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
 import net.minecraft.text.Text;
@@ -13,7 +13,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import static fdsfd.sbfabric.SBFabric.LOGGER;
 
 @Mixin(ClientPlayNetworkHandler.class)
 public class ClientPlayNetworkHandlerMixin {
@@ -27,7 +26,6 @@ public class ClientPlayNetworkHandlerMixin {
 
         // Puzzler Solver Logger
         if (messageString.startsWith("§e[NPC] §dPuzzler§f: ") && ConfigManager.config.puzzlerSolverEnabled) {
-            LOGGER.info("Puzzler Message Found");
             PuzzlerSolver.solvePuzzler(messageString);
         }
 

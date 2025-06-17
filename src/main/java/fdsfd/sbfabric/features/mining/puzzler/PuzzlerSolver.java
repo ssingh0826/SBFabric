@@ -1,13 +1,8 @@
-package fdsfd.sbfabric.features.puzzler;
+package fdsfd.sbfabric.features.mining.puzzler;
 
 import net.minecraft.util.math.BlockPos;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class PuzzlerSolver {
-
-    public static final String MOD_ID = "sbfabric";
-    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     public static BlockPos block = null;
     public static boolean puzzlerSolved = false;
