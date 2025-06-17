@@ -37,8 +37,8 @@ public class ClientPlayNetworkHandlerMixin {
         }
 
         // Ability Cooldown Message Logger
-        if (messageString.endsWith(" §r§ais now available!§r")) {
-            String ability = messageString.substring(0, messageString.indexOf(" §r§ais now available!§r"));
+        if (messageString.contains(" is now available!")) {
+            String ability = messageString.substring(0, messageString.indexOf(" is now available!"));
             AbilityCooldownMessage.message(ability);
         }
     }
