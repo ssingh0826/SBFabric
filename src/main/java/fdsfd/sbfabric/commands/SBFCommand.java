@@ -2,11 +2,14 @@ package fdsfd.sbfabric.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import fdsfd.sbfabric.screens.SBFabricScreen;
 import fdsfd.sbfabric.utils.PingUtils;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 
 public class SBFCommand {
 
@@ -14,12 +17,24 @@ public class SBFCommand {
 
     public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher) {
         dispatcher.register(ClientCommandManager.literal("sbf")
-            .executes(SBFCommand::execute1)
+            .executes(SBFCommand::openScreen)
                 .then(ClientCommandManager.literal("ping")
-                        .executes(SBFCommand::execute2)));
+                    .executes(SBFCommand::ping))
+                .then(ClientCommandManager.literal("help")
+                    .executes(SBFCommand::commandList)));
     }
 
-    private static int execute1 (CommandContext<FabricClientCommandSource> context) {
+    public static int commandList(CommandContext<FabricClientCommandSource> context) {
+        MinecraftClient client = MinecraftClient.getInstance();
+        client.player.sendMessage(Text.literal("SBFabric").formatted(Formatting.BOLD).formatted(Formatting.BLUE)
+            .append(Text.literal(" ➤ ").formatted(Formatting.BOLD).formatted(Formatting.GRAY))
+            .append(Text.literal(" command list: /droprate, /sbf, /sbf help").formatted(Formatting.BOLD).formatted(Formatting.YELLOW))
+        , false);
+        
+        return 1;
+    }
+
+    private static int openScreen (CommandContext<FabricClientCommandSource> context) {
         shouldOpenScreen = true;
         MinecraftClient client = MinecraftClient.getInstance();
 
@@ -28,7 +43,7 @@ public class SBFCommand {
         return 1;
     }
 
-    private static int execute2 (CommandContext<FabricClientCommandSource> context) {
+    private static int ping (CommandContext<FabricClientCommandSource> context) {
         PingUtils.displayPing();
         return 1;
     }

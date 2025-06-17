@@ -4,6 +4,6 @@
 </p>
 
 SBFabric is a mod made for the Fabric Loader meant to be used for Hypixel Skyblock. This is a general mod that aims to provide quality-of-life features for areas throughout the game.
-To open the mod's menu, use the command /sbf or open the mod's configuration screen through ModMenu.
+To open the mod's menu, use the command /sbf or open the mod's configuration screen through ModMenu. A list of commands can be found by typing /sbf help.
 
-You can join the discord through the badge or through [here](https://discord.com/6x22sWgFKa)
+You can join the discord through the badge or through [here](https://discord.com/6x22sWgFKa).
