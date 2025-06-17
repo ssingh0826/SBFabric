@@ -3,7 +3,7 @@ package fdsfd.sbfabric;
 import fdsfd.sbfabric.commands.DropRateCommand;
 import fdsfd.sbfabric.commands.SBFCommand;
 import fdsfd.sbfabric.config.ConfigManager;
-import fdsfd.sbfabric.features.puzzler.DungeonBlessingDisplay;
+import fdsfd.sbfabric.features.dungeonblessingdisplay.DungeonBlessingDisplay;
 import fdsfd.sbfabric.features.puzzler.PuzzlerSolver;
 import fdsfd.sbfabric.utils.RenderUtils;
 import net.fabricmc.api.ClientModInitializer;
@@ -26,8 +26,6 @@ import org.slf4j.LoggerFactory;
 public class SBFabric implements ClientModInitializer {
 	public static final String MOD_ID = "sbfabric";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-
-	public static BlockPos highlightPos = null;
 
 	@Override
 	public void onInitializeClient() {

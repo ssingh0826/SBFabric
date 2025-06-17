@@ -1,4 +1,4 @@
-package fdsfd.sbfabric.features.puzzler;
+package fdsfd.sbfabric.features.dungeonblessingdisplay;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.scoreboard.Scoreboard;

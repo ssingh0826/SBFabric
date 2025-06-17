@@ -1,7 +1,8 @@
 package fdsfd.sbfabric.mixins;
 
-import fdsfd.sbfabric.config.Config;
-import fdsfd.sbfabric.features.puzzler.DungeonBlessingDisplay;
+import fdsfd.sbfabric.config.ConfigManager;
+import fdsfd.sbfabric.features.abilitycooldown.AbilityCooldownMessage;
+import fdsfd.sbfabric.features.dungeonblessingdisplay.DungeonBlessingDisplay;
 import fdsfd.sbfabric.features.puzzler.PuzzlerSolver;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
@@ -12,27 +13,33 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import static fdsfd.sbfabric.SBFabric.LOGGER;
+
 @Mixin(ClientPlayNetworkHandler.class)
 public class ClientPlayNetworkHandlerMixin {
 
     @Unique
-    public Config config = new Config();
 
     @Inject(method = "onGameMessage", at = @At("HEAD"))
     private void onGameMessage(GameMessageS2CPacket packet, CallbackInfo ci) {
         Text message = packet.content();
         String messageString = message.getString();
 
-        // Puzzler Solver
-        if (messageString.startsWith("§e[NPC] §dPuzzler§f: ") && config.puzzlerSolverEnabled) {
-            System.out.println("Puzzler message received: " + messageString);
+        // Puzzler Solver Logger
+        if (messageString.startsWith("§e[NPC] §dPuzzler§f: ") && ConfigManager.config.puzzlerSolverEnabled) {
+            LOGGER.info("Puzzler Message Found");
             PuzzlerSolver.solvePuzzler(messageString);
         }
 
         // Dungeon Blessing Chat Logger
         if (messageString.startsWith("DUNGEON BUFF!") || messageString.startsWith("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")) {
-            System.out.println("Dungeon buff registered.");
             DungeonBlessingDisplay.displayBlessings(messageString);
+        }
+
+        // Ability Cooldown Message Logger
+        if (messageString.endsWith(" §r§ais now available!§r")) {
+            String ability = messageString.substring(0, messageString.indexOf(" §r§ais now available!§r"));
+            AbilityCooldownMessage.message(ability);
         }
     }
 

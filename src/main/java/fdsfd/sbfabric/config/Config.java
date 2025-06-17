@@ -2,16 +2,15 @@ package fdsfd.sbfabric.config;
 
 public class Config {
 
-    // Make sure to keep them non-static for the config to work.
-
     // DUNGEONS
-    public boolean displayDungeonBlessings = true;
+    public boolean displayDungeonBlessings = false;
 
     // FARMING
 
 
     // MINING
-    public boolean puzzlerSolverEnabled = true;
+    public boolean abilityCooldownMessageEnabled = false;
+    public boolean puzzlerSolverEnabled = false;
 
     // MISC
 }
