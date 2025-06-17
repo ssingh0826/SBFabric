@@ -27,8 +27,6 @@ public class SBFabric implements ClientModInitializer {
 	public static final String MOD_ID = "sbfabric";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	public static BlockPos highlightPos = null;
-
 	@Override
 	public void onInitializeClient() {
 		LOGGER.info("SBFabric is initializing!");
