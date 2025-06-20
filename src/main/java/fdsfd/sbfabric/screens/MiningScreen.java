@@ -5,8 +5,6 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.Text;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class MiningScreen extends Screen {
 
@@ -53,6 +51,17 @@ public class MiningScreen extends Screen {
         }).dimensions(x, y, buttonWidth, buttonHeight).build();
 
         this.addDrawableChild(abilityCooldownMessageButton);
+
+        y += buttonHeight + 10;
+
+        ButtonWidget fuelDisplayButton = ButtonWidget.builder(Text.of("Fuel Display: " + (ConfigManager.config.fuelDisplayEnabled ? "ON" : "OFF")), (button) -> {
+            ConfigManager.config.fuelDisplayEnabled = !ConfigManager.config.fuelDisplayEnabled;
+            button.setMessage(Text.of("Fuel Display: " + (ConfigManager.config.fuelDisplayEnabled ? "ON" : "OFF")));
+            ConfigManager.save();
+
+        }).dimensions(x, y, buttonWidth, buttonHeight).build();
+
+        this.addDrawableChild(fuelDisplayButton);
     }
 
     @Override

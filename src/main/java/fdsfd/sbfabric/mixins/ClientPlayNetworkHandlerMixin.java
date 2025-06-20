@@ -3,6 +3,7 @@ package fdsfd.sbfabric.mixins;
 import fdsfd.sbfabric.config.ConfigManager;
 import fdsfd.sbfabric.features.mining.abilitycooldown.AbilityCooldownMessage;
 import fdsfd.sbfabric.features.dungeons.dungeonblessingdisplay.DungeonBlessingDisplay;
+import fdsfd.sbfabric.features.mining.fueldisplay.FuelDisplay;
 import fdsfd.sbfabric.features.mining.puzzler.PuzzlerSolver;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
@@ -45,6 +46,7 @@ public class ClientPlayNetworkHandlerMixin {
     @Inject(method = "onScoreboardObjectiveUpdate", at = @At("TAIL"))
     private void onScoreboardChange(CallbackInfo ci) throws InterruptedException {
         DungeonBlessingDisplay.checkDungeonStatus();
+        FuelDisplay.displayFuel();
     }
 
     // World Loader

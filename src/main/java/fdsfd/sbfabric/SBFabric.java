@@ -4,6 +4,7 @@ import fdsfd.sbfabric.commands.DropRateCommand;
 import fdsfd.sbfabric.commands.SBFCommand;
 import fdsfd.sbfabric.config.ConfigManager;
 import fdsfd.sbfabric.features.dungeons.dungeonblessingdisplay.DungeonBlessingDisplay;
+import fdsfd.sbfabric.features.mining.fueldisplay.FuelDisplay;
 import fdsfd.sbfabric.features.mining.puzzler.PuzzlerSolver;
 import fdsfd.sbfabric.utils.RenderUtils;
 import net.fabricmc.api.ClientModInitializer;
@@ -73,6 +74,16 @@ public class SBFabric implements ClientModInitializer {
 			VertexConsumerProvider.Immediate buffer = MinecraftClient.getInstance().getBufferBuilders().getEntityVertexConsumers();
 
 			renderer.draw(Text.literal(DungeonBlessingDisplay.string()), 0, 0, 0x57B9FF, true, matrices, buffer, TextRenderer.TextLayerType.NORMAL, 1, 1, false);
+		});
+
+		HudRenderCallback.EVENT.register((context, tickCounter) -> {
+			if (ConfigManager.config == null || !ConfigManager.config.fuelDisplayEnabled) return;
+			if (FuelDisplay.displayFuel().equals("")) return;
+			TextRenderer renderer = MinecraftClient.getInstance().textRenderer;
+			Matrix4f matrices = context.getMatrices().peek().translate(0.0F, 0.0F, 0.0F);
+			VertexConsumerProvider.Immediate buffer = MinecraftClient.getInstance().getBufferBuilders().getEntityVertexConsumers();
+
+			renderer.draw(Text.literal(FuelDisplay.displayFuel()), 0, 0, 0x57B9FF, true, matrices, buffer, TextRenderer.TextLayerType.NORMAL, 1, 1, false);
 		});
 
 		ClientTickEvents.END_CLIENT_TICK.register(SBFCommand::tick);

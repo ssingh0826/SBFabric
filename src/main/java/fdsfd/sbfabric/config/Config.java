@@ -11,6 +11,7 @@ public class Config {
     // MINING
     public boolean abilityCooldownMessageEnabled = false;
     public boolean puzzlerSolverEnabled = false;
+    public boolean fuelDisplayEnabled = false;
 
     // MISC
 }
