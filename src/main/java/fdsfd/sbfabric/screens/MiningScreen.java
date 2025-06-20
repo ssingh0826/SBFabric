@@ -10,10 +10,6 @@ import org.slf4j.LoggerFactory;
 
 public class MiningScreen extends Screen {
 
-    public static final String MOD_ID = "sbfabric";
-
-    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-
     public Screen parent;
 
     public MiningScreen() {
@@ -46,6 +42,17 @@ public class MiningScreen extends Screen {
         }).dimensions(x, y, buttonWidth, buttonHeight).build();
 
         this.addDrawableChild(puzzlerSolverButton);
+
+        y += buttonHeight + 10;
+
+        ButtonWidget abilityCooldownMessageButton = ButtonWidget.builder(Text.of("Ability Cooldown Message: " + (ConfigManager.config.abilityCooldownMessageEnabled ? "ON" : "OFF")), (button) -> {
+            ConfigManager.config.abilityCooldownMessageEnabled = !ConfigManager.config.abilityCooldownMessageEnabled;
+            button.setMessage(Text.of("Ability Cooldown Message: " + (ConfigManager.config.abilityCooldownMessageEnabled ? "ON" : "OFF")));
+            ConfigManager.save();
+
+        }).dimensions(x, y, buttonWidth, buttonHeight).build();
+
+        this.addDrawableChild(abilityCooldownMessageButton);
     }
 
     @Override

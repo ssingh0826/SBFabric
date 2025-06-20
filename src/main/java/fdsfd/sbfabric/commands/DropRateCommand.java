@@ -15,9 +15,9 @@ public class DropRateCommand {
                 .then(ClientCommandManager.argument("dropChancePercent", DoubleArgumentType.doubleArg())
                         .then(ClientCommandManager.argument("magicfind", DoubleArgumentType.doubleArg())
                                 .then(ClientCommandManager.argument("lootingLevel", IntegerArgumentType.integer())
-                                        .executes(DropRateCommand::execute3)
+                                        .executes(DropRateCommand::itemDropChance)
                                         .then(ClientCommandManager.argument("petluck", DoubleArgumentType.doubleArg())
-                                                .executes(DropRateCommand::execute4)
+                                                .executes(DropRateCommand::petDropChance)
                                         )
                                 )
                         )
@@ -25,7 +25,7 @@ public class DropRateCommand {
         );
     }
 
-    private static int execute3(CommandContext<FabricClientCommandSource> context) {
+    private static int itemDropChance(CommandContext<FabricClientCommandSource> context) {
         double dropChancePercent = DoubleArgumentType.getDouble(context, "dropChancePercent");
         double magicFind = DoubleArgumentType.getDouble(context, "magicfind");
         int lootingLevel = IntegerArgumentType.getInteger(context, "lootingLevel");
@@ -42,7 +42,7 @@ public class DropRateCommand {
         return 1;
     }
 
-    private static int execute4(CommandContext<FabricClientCommandSource> context) {
+    private static int petDropChance(CommandContext<FabricClientCommandSource> context) {
         double dropChancePercent = DoubleArgumentType.getDouble(context, "dropChancePercent");
         double magicFind = DoubleArgumentType.getDouble(context, "magicfind");
         int lootingLevel = IntegerArgumentType.getInteger(context, "lootingLevel");

@@ -28,6 +28,14 @@ public class SBFabricScreen extends Screen {
         int x = (this.width - buttonWidth) / 2;
         int y = (this.height - 110) / 2;
 
+        ButtonWidget editGuiButton = ButtonWidget.builder(Text.of("Move GUI Elements"), (button) -> {
+            // do nothing right now
+        }).dimensions(x, y, buttonWidth, buttonHeight).build();
+
+        this.addDrawableChild(editGuiButton);
+
+        y += buttonHeight + 10;
+
         ButtonWidget farmingButton = ButtonWidget.builder(Text.of("Farming"), (button) -> {
             this.client.setScreen(new FarmingScreen());
         }).dimensions(x, y, buttonWidth, buttonHeight).build();

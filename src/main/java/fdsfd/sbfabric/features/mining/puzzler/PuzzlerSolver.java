@@ -1,4 +1,4 @@
-package fdsfd.sbfabric.features.puzzler;
+package fdsfd.sbfabric.features.mining.puzzler;
 
 import net.minecraft.util.math.BlockPos;
 
@@ -8,7 +8,7 @@ public class PuzzlerSolver {
     public static boolean puzzlerSolved = false;
 
     public static void solvePuzzler(String message) {
-        System.out.println("solvePuzzler() called with message: " + message);
+
         int left = 0, right = 0, up = 0, down = 0, x = 181, y = 195, z = 135;
 
         for (char c : message.toCharArray()) {

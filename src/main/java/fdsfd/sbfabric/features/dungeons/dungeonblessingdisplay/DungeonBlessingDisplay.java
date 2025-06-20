@@ -1,4 +1,4 @@
-package fdsfd.sbfabric.features.puzzler;
+package fdsfd.sbfabric.features.dungeons.dungeonblessingdisplay;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.scoreboard.Scoreboard;
@@ -10,6 +10,7 @@ import java.util.List;
 public class DungeonBlessingDisplay {
     public static int blessingOfPower = 0, blessingOfWisdom = 0, blessingOfTime = 0;
     public static boolean inDungeons = false;
+
     public static void displayBlessings(String chatMessage) {
         MinecraftClient client = MinecraftClient.getInstance();
 

@@ -62,6 +62,7 @@ public class RenderUtils {
         lines.vertex(matrix, (float)x1, (float)y2, (float)z2).color(r, g, b, a).normal(entry, 0.0f, 1.0f, 0.0f);
     }
 
+    // This currently does not work
     public static void drawTranslucentBox(MatrixStack matrices, VertexConsumerProvider buffers, Box box, Vec3d cameraPos, float r, float g, float b, float a) {
 
         MatrixStack.Entry entry = matrices.peek();
